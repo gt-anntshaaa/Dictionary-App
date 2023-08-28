@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Dictionary App</string>
+    <string name="word">Word</string>
+    <string name="meanings">Meanings</string>
+    <string name="audio">audio</string>
+    <string name="ha_lo">ha-lo</string>
+    <string name="exclamotory">Exclamotory</string>
+    <string name="example">Example</string>
+    <string name="definition">Definition</string>
+    <string name="synonyms">Synonyms</string>
+    <string name="antonyms">Antonyms</string>
 </resources>
