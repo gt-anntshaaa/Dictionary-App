@@ -40,7 +40,7 @@
                 android:textAlignment="center"
                 android:id="@+id/tv_word"/>
             <androidx.recyclerview.widget.RecyclerView
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
                 android:id="@+id/recycler_phonetic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

@@ -7,5 +7,5 @@ import retrofit2.http.Path
 
 interface DictionaryService {
     @GET(EndPoint.GET_DICTIONARY)
-    suspend fun callMeanings(@Path("word") word: String) : Response<List<DictionaryResponse>>
+    suspend fun callMeanings(@Path("word") word: String) : Response<DictionaryResponse>
 }
