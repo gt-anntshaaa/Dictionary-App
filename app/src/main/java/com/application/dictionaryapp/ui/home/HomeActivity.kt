@@ -15,6 +15,7 @@ import com.application.dictionaryapp.R
 import com.application.dictionaryapp.databinding.ActivityHomeBinding
 import com.application.dictionaryapp.helper.Resource
 import com.application.dictionaryapp.networks.DictionaryResponse
+import com.application.dictionaryapp.ui.home.adapter.MeaningAdapter
 import com.application.dictionaryapp.ui.home.adapter.PhoneticAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var phoneticAdapter: PhoneticAdapter
+    private lateinit var meaningAdapter: MeaningAdapter
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -44,8 +46,13 @@ class HomeActivity : AppCompatActivity() {
                         it.phonetics
                     }
 
+                    val meaning = resource.data.flatMap {
+                        it.meanings
+                    }
+
                     // menampilkan data phonetic
                     phoneticAdapter.submit(phonetic)
+                    meaningAdapter.submit(meaning)
                 }
                 is Resource.Failure -> {
                     Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
@@ -90,6 +97,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerMeanings() {
+        binding.recyclerMeanings.layoutManager = GridLayoutManager(this, 1)
+        meaningAdapter = MeaningAdapter()
+
+        binding.recyclerMeanings.adapter = meaningAdapter
 
     }
 

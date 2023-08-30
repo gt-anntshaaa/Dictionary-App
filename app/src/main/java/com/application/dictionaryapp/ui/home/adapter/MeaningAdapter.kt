@@ -2,6 +2,7 @@ package com.application.dictionaryapp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.application.dictionaryapp.databinding.ItemMeaningsBinding
 import com.application.dictionaryapp.networks.DictionaryResponse
@@ -12,6 +13,7 @@ class MeaningAdapter : RecyclerView.Adapter<MeaningAdapter.MeaningViewHolder>() 
     inner class MeaningViewHolder(private val binding: ItemMeaningsBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(meaning: DictionaryResponse.DictionaryResponseItem.Meaning){
             binding.tvPartOfSpeach.text = meaning.partOfSpeech
+            binding.recyclerDefinitions.layoutManager = GridLayoutManager(itemView.context, 1)
         }
     }
 
@@ -31,5 +33,14 @@ class MeaningAdapter : RecyclerView.Adapter<MeaningAdapter.MeaningViewHolder>() 
 
     override fun onBindViewHolder(holder: MeaningViewHolder, position: Int) {
         holder.bind(listMeaning[position])
+    }
+
+    fun submit(data : List<DictionaryResponse.DictionaryResponseItem.Meaning>){
+        listMeaning.apply {
+            clear()
+
+            addAll(data)
+            notifyDataSetChanged()
+        }
     }
 }
